@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137552ac5916e4ec4a50bc0ac0edd722, type: 3}
+  m_Name: SoundBank
+  m_EditorClassIdentifier: HistoryDungeon.View::HistoryDungeon.View.SoundBank
+  _seButtonStart: {fileID: 8300000, guid: 38ca9f4398a2a4b57baca02645741735, type: 3}
+  _sePageTurn: {fileID: 8300000, guid: e43faf6054e0446ef860f0d2cae03ab3, type: 3}
+  _seCorrect: {fileID: 8300000, guid: 6a0aafd3250914a298e050a437714721, type: 3}
+  _seIncorrect: {fileID: 8300000, guid: fb2bed700284c46459b8b9ca1756d9c7, type: 3}
+  _seEraCleared: {fileID: 8300000, guid: 076b301f32b6943988485fdc93989836, type: 3}
+  _bgmTitle: {fileID: 8300000, guid: d10f8d8d46ece48c18cf4c44a135906b, type: 3}
+  _bgmClassroom: {fileID: 8300000, guid: 3e9685d8164134fd7ba8a46588add0a9, type: 3}
+  _bgmDungeon: {fileID: 8300000, guid: 107651ad4146a4d0b8bd4945accaf2aa, type: 3}
+  _bgmEnding: {fileID: 8300000, guid: a5e04d842affa46aa9b4a25eaa92f593, type: 3}
+  _seVolume: 0.8
+  _bgmVolume: 0.35

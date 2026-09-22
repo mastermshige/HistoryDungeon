@@ -1,0 +1,7 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# --- GitHub Linguist の言語判定オーバーライド ---
+# Unity のウィンドウレイアウト設定ファイル。中身はYAMLだが拡張子 .wlt を
+# Linguist が「Wolfram Language」と誤判定するため、言語バーの集計から除外する。
+*.wlt linguist-generated=true

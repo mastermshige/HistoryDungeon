@@ -1,0 +1,9 @@
+﻿<Solution>
+  <Project Path="HistoryDungeon.Tests.Editor.csproj" />
+  <Project Path="HistoryDungeon.Logic.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="HistoryDungeon.Presenter.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="HistoryDungeon.View.csproj" />
+</Solution>
