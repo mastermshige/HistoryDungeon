@@ -164,6 +164,14 @@ Ending で間違えた問題があれば、Ending → 復習（Dungeon シーン
 - 未設定: Apple の署名と公証（Ad hoc 署名のみ）、Windows の署名（コード署名証明書なし）
 - Windows 版の注意: 署名が無いため、初回の起動時に Windows の SmartScreen が「WindowsによってPCが保護されました」と出ることがある。「詳細情報」→「実行」で起動できる。zip は、展開してから起動する（zip の中から直接起動しない）
 - ビルドの手順: Unity Hub で Windows Build Support (Mono) を導入済み（Unity の再起動が必要）。エディタのビルド対象を切り替えてからビルドし、終わったら Mac に戻す
+
+### 配布パッケージ（2026-09-22 決定・自分と身近な人に無料配布）
+
+- 配布先: 決まった相手にファイルを直接渡す（GitHub Releases・共有ストレージ・メール添付など。ダウンロードページは作らない）
+- 配布パッケージは `Secretary/Distribution/make_packages.sh` で作る（`Builds/Mac`・`Builds/Windows` のビルドから、`Builds/HistoryDungeon_Mac_<version>.zip`・`Builds/HistoryDungeon_Windows_<version>.zip` を生成）
+  - 同梱物: 遊び方（`README.txt`。起動手順・困ったときの案内・使用素材とライセンスの一覧）、`Licenses/`（Kenney・Noto Sans JP・UniTask の各ライセンス全文）
+  - Mac 版は、Unity が作ったアプリの実行ファイル名が日本語（製品名）のままだと `codesign --verify` に失敗し、受け取った人の Mac で「壊れている」と出る。スクリプトが実行ファイル名を英字（`HistoryDungeon`）に変え、Finder 上の名前は `CFBundleDisplayName` で日本語のまま保ち、署名をやり直して解決している
+- 素材のライセンス（配布可能なことを確認済み）: Kenney Tiny Dungeon（CC0）／Noto Sans JP（SIL OFL 1.1）／UniTask（MIT, Copyright 2019 Yoshifumi Kawai / Cysharp, Inc.）／DOTween（Demigiant の無料版ライセンスに準拠。第三者への再配布条件は `Assets/Plugins/Demigiant/DOTween/readme.txt` のリンク先を確認）
 - 注意: 署名・公証が無いため、他の Mac で開くと「開発元を検証できません」と出る。右クリック →「開く」で起動できる。広く配るには Apple Developer Program（有料）の署名・公証が必要
 
 ---

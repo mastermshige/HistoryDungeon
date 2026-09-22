@@ -118,6 +118,13 @@
   - 検証: コンパイル エラー0・警告0、EditMode テスト 43件中 43件成功。データの読み込みで、全問の検証を通過・問題文とキャラ名の重複なし・年表は最大6項目・解説の最長は81文字を確認。Play Mode で自動プレイ（一時的な確認用スクリプト。確認後に削除）を実施: タイトル → 全15時代（解説47ページ、解答123回＝正解99回＋わざと間違えた24回）→ エンディング → 復習24問を全問正解 → エンディングへ戻る、までを通し、実行時のエラー0件（警告は既知の動的フォントの表示のみ）
   - 作業中の不具合: 確認用スクリプトを最初に Play Mode ではない状態で追加してしまい、複数が同時に動いて数字が混ざった。シーンを読み込み直して余計なオブジェクトを消し（シーンに保存された変更なし）、1つだけで取り直した
   - ビルドも更新: `Builds/Mac/HistoryDungeon.app` と配布用 zip（約51MB）を作り直し、起動して10秒以上動き・ログのエラー0件を確認
+- 配布方法を決定・準備（オーナーと決定: 自分と身近な人に無料で配布。Mac・Windows 両方）:
+  - `Secretary/Distribution/README.txt`（遊び方・起動手順・困ったときの案内・使用素材とライセンス）と `Secretary/Distribution/Licenses/`（Kenney・Noto Sans JP・UniTask の各ライセンス全文）を作成。UniTask のライセンスは GitHub の公式リポジトリから取得
+  - 配布パッケージを作る手順を `Secretary/Distribution/make_packages.sh` としてスクリプト化（再現・更新できるように）
+  - 発見した不具合: Mac 版は、実行ファイル名が日本語（製品名）のままだと `codesign --verify --deep --strict` に失敗し、受け取った人の Mac では「壊れている」というエラーで開けない可能性があった。実行ファイル名を英字（`HistoryDungeon`）に変え、Finder 上に出る名前は `CFBundleDisplayName` で日本語のまま保つ形にして、署名をやり直して解決した
+  - 検証: 作り直した Mac 版の zip を展開し、`codesign --verify --deep --strict` が通ることを確認。実際に起動して10秒以上動き、ログのエラー0件を確認。Windows 版の zip はファイル名の文字化けが無いことを確認（作業中、一時的に日本語名のフォルダが二重に入る不具合が起きたため、スクリプトを直して解消）
+  - できあがったもの: `Builds/HistoryDungeon_Mac_0.1.0.zip`（約51MB）、`Builds/HistoryDungeon_Windows_0.1.0.zip`（約43MB）
+  - 未確認: Windows 版を実際の Windows で起動できるか（この Mac では確認できない）
 - git に初回コミットしてプッシュ（オーナーの指示。プッシュ先は「GitHub に新しい非公開リポジトリ」を選択）:
   - それまで git のリポジトリではなかったため、`git init`（ブランチ名 main）→ GitHub に非公開リポジトリ `mastermshige/HistoryDungeon` を作成 → 初回コミット（461ファイル）をプッシュ。リポジトリ: https://github.com/mastermshige/HistoryDungeon
   - `.gitignore` に `mono_crash.*.json`（Unity のクラッシュ記録）と `/.uloop/outputs/`（確認作業の出力）を追加。Library・Temp・Logs・Builds（ビルド成果物・配布用 zip）は元から除外されている
