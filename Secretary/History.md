@@ -118,6 +118,13 @@
   - 検証: コンパイル エラー0・警告0、EditMode テスト 43件中 43件成功。データの読み込みで、全問の検証を通過・問題文とキャラ名の重複なし・年表は最大6項目・解説の最長は81文字を確認。Play Mode で自動プレイ（一時的な確認用スクリプト。確認後に削除）を実施: タイトル → 全15時代（解説47ページ、解答123回＝正解99回＋わざと間違えた24回）→ エンディング → 復習24問を全問正解 → エンディングへ戻る、までを通し、実行時のエラー0件（警告は既知の動的フォントの表示のみ）
   - 作業中の不具合: 確認用スクリプトを最初に Play Mode ではない状態で追加してしまい、複数が同時に動いて数字が混ざった。シーンを読み込み直して余計なオブジェクトを消し（シーンに保存された変更なし）、1つだけで取り直した
   - ビルドも更新: `Builds/Mac/HistoryDungeon.app` と配布用 zip（約51MB）を作り直し、起動して10秒以上動き・ログのエラー0件を確認
+- git に初回コミットしてプッシュ（オーナーの指示。プッシュ先は「GitHub に新しい非公開リポジトリ」を選択）:
+  - それまで git のリポジトリではなかったため、`git init`（ブランチ名 main）→ GitHub に非公開リポジトリ `mastermshige/HistoryDungeon` を作成 → 初回コミット（461ファイル）をプッシュ。リポジトリ: https://github.com/mastermshige/HistoryDungeon
+  - `.gitignore` に `mono_crash.*.json`（Unity のクラッシュ記録）と `/.uloop/outputs/`（確認作業の出力）を追加。Library・Temp・Logs・Builds（ビルド成果物・配布用 zip）は元から除外されている
+  - 発見した問題: `Assets/Project/Fonts/NotoSansJP SDF.asset` が約80MBあった。動的フォントが増えたときの取り残しで、使われていない atlas 画像38枚（各約2MB）がファイルの中に残っていたため。GitHub の上限（100MB）に近く、履歴に残ると以後も重くなるため、バックアップを取ってから未使用の画像だけを削除し、約6.5KB（Play 後は約2.1MB）に縮めた。日本語の表示は Play Mode で確認済み（フォントは実行時に文字を作る動的方式のまま）
+  - 検証: コンパイル エラー0・警告0。コミット前の最大ファイルは 9.6MB のフォント本体（.git は約30MB）
+  - 注意: このフォントアセットは Play するたびに文字が増えて、ファイルが大きくなることがある。コミット前に大きさを確認する（数MBを超えていたら、未使用の atlas 画像の取り残しを疑う）
+  - 補足: 表示確認は Play Mode で行った。ビルド（Mac・Windows）はフォント縮小の前に作ったため、次にビルドし直すとサイズが小さくなる可能性がある（未確認）
 - Windows 向けビルドを実施（オーナーと決定: Mac の次に Windows）:
   - Unity Hub のコマンドで Windows Build Support (Mono) を導入（約345MB）。導入直後は起動中の Unity が新機能を読み込んでおらず、ビルドが「Build target 'StandaloneWindows64' not supported」で失敗したため、オーナーの了承を得て Unity を再起動した（終了は通常の終了信号で行い、保存は完了済みだった）
   - ビルド: `Builds/Windows/HistoryDungeon/HistoryDungeon.exe`（Windows 64ビット、約109MB）。エラー0・警告1（既知の動的フォントの表示のみ）。配布用 `Builds/HistoryDungeon_Windows_0.1.0.zip`（約43MB、BurstDebugInformation は除外）。プレイヤー設定（製品名・1920×1080・リサイズ可・アイコン）は Mac と共通
