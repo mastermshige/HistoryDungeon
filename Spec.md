@@ -167,7 +167,10 @@ Ending で間違えた問題があれば、Ending → 復習（Dungeon シーン
 
 ### 配布パッケージ（2026-09-22 決定・自分と身近な人に無料配布）
 
-- 配布先: 決まった相手にファイルを直接渡す（GitHub Releases・共有ストレージ・メール添付など。ダウンロードページは作らない）
+- 配布先: GitHub Releases（オーナーと決定。相手が GitHub アカウントを持たない前提のため、リポジトリを Public に切り替えて公開）
+  - リポジトリ: https://github.com/mastermshige/HistoryDungeon （2026-09-22 に Public 化。公開前に、パスワードや鍵などの機密情報が含まれていないことを確認済み）
+  - リリース: https://github.com/mastermshige/HistoryDungeon/releases/tag/v0.1.0 に Mac・Windows 両方の zip を添付。ログイン不要でダウンロードできることを確認済み
+  - バージョンを上げるたびに、新しいタグ（例: v0.1.1）でリリースを作り直す
 - 配布パッケージは `Secretary/Distribution/make_packages.sh` で作る（`Builds/Mac`・`Builds/Windows` のビルドから、`Builds/HistoryDungeon_Mac_<version>.zip`・`Builds/HistoryDungeon_Windows_<version>.zip` を生成）
   - 同梱物: 遊び方（`README.txt`。起動手順・困ったときの案内・使用素材とライセンスの一覧）、`Licenses/`（Kenney・Noto Sans JP・UniTask の各ライセンス全文）
   - Mac 版は、Unity が作ったアプリの実行ファイル名が日本語（製品名）のままだと `codesign --verify` に失敗し、受け取った人の Mac で「壊れている」と出る。スクリプトが実行ファイル名を英字（`HistoryDungeon`）に変え、Finder 上の名前は `CFBundleDisplayName` で日本語のまま保ち、署名をやり直して解決している
